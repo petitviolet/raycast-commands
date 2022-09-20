@@ -2,6 +2,6 @@
 
 UnixTime translation
 
-![starter](assets/starter.png)
+![starter](./starter.png)
 
-![list](assets/list.png)
+![list](./list.png)
