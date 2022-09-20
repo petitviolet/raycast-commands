@@ -1,0 +1,43 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "raycast-unixtime",
+  "title": "raycast-unixtime",
+  "description": "UnixTime translation",
+  "icon": "command-icon.png",
+  "author": "petitviolet",
+  "categories": [
+    "Developer Tools"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "index",
+      "title": "time",
+      "subtitle": "UnixTime translation",
+      "description": "",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.39.3",
+    "dayjs": "^1.11.5",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "@types/react": "^18.0.20",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "ray publish"
+  }
+}
