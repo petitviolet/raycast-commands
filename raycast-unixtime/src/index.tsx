@@ -7,10 +7,10 @@ export default () => {
 
   // const input = props.arguments.input;
   const forDate: dayjs.Dayjs | undefined = useMemo(() => {
-    if (input === 'now') {
+    if (input === "now") {
       return dayjs();
     }
-    const date = dayjs(input)
+    const date = dayjs(input);
     if (date.isValid()) {
       return date;
     }
@@ -20,25 +20,25 @@ export default () => {
     }
 
     return;
-  }, [input])
+  }, [input]);
 
   const forUnixTime: dayjs.Dayjs | undefined = useMemo(() => {
-    if (input === 'now') {
-      return dayjs()
+    if (input === "now") {
+      return dayjs();
     }
-    const date = dayjs(input)
+    const date = dayjs(input);
     if (date.isValid()) {
       return date;
     }
-    const _unixtime = parseInt(input)
+    const _unixtime = parseInt(input);
     if (isValidUnixTime(_unixtime)) {
-      return dayjs.unix(_unixtime)
+      return dayjs.unix(_unixtime);
     }
 
     return undefined;
-  }, [input])
+  }, [input]);
 
-  const unixtimeStr = forUnixTime ? `${forUnixTime.unix()}` : '';
+  const unixtimeStr = forUnixTime ? `${forUnixTime.unix()}` : "";
   const dateStrs: string[] = useMemo(() => {
     if (!forDate) return [];
     const _date = dayjs(forDate);
@@ -52,28 +52,35 @@ export default () => {
       _date.format("YYYYMMDD"),
       _date.format("hhmmss"),
       _date.format("hh:mm:ss"),
-    ]
-  }, [forDate])
+    ];
+  }, [forDate]);
 
-  return (<List
-    searchText={input}
-    onSearchTextChange={setInput}>
-    {[unixtimeStr, ...dateStrs].map((item) => {
-      return (<List.Item key={item} title={item}
-        actions={
-          <ActionPanel>
-            <Action title="Copy" onAction={async () => {
-              await Clipboard.copy(item);
-              await showHUD(`Copied ${item} to clipboard`);
-            }} />
-          </ActionPanel>
-        }></List.Item>);
-    })}
-  </List>
+  return (
+    <List searchText={input} onSearchTextChange={setInput}>
+      {[unixtimeStr, ...dateStrs].map((item) => {
+        return (
+          <List.Item
+            key={item}
+            title={item}
+            actions={
+              <ActionPanel>
+                <Action
+                  title="Copy"
+                  onAction={async () => {
+                    await Clipboard.copy(item);
+                    await showHUD(`Copied ${item} to clipboard`);
+                  }}
+                />
+              </ActionPanel>
+            }
+          ></List.Item>
+        );
+      })}
+    </List>
   );
-}
+};
 
 const toUnixTime = (date: dayjs.Dayjs): number => date.unix();
 const fromUnixTime = (unixtime: number): dayjs.Dayjs => dayjs(new Date(unixtime * 1000));
 
-const isValidUnixTime = (unixtime: number): boolean => !Number.isNaN(unixtime) && unixtime > 10000000
+const isValidUnixTime = (unixtime: number): boolean => !Number.isNaN(unixtime) && unixtime > 10000000;
