@@ -1,11 +1,11 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "UnixTime translator",
+  "name": "unixtime-translator",
   "title": "UnixTime translator",
   "description": "UnixTime translation in Raycast",
-  "icon": "command-icon.png",
-  "license": "MIT",
+  "icon": "raycast-unixtime.png",
   "author": "petitviolet",
+  "owner": "play-tech.jp",
   "categories": [
     "Developer Tools"
   ],
@@ -15,7 +15,7 @@
       "name": "index",
       "title": "time",
       "subtitle": "UnixTime translation",
-      "description": "",
+      "description": "translate input to/from unixtime",
       "mode": "view"
     }
   ],
