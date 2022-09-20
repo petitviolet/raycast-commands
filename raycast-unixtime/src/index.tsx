@@ -43,15 +43,15 @@ export default () => {
     if (!forDate) return [];
     const _date = dayjs(forDate);
     return [
-      _date.format("YYYY-MM-DD hh:mm:ss"),
-      _date.format("YYYY-MM-DD hh:mm:ss Z"),
-      _date.format("YYYY/MM/DD hh:mm:ss"),
-      _date.format("YYYY/MM/DD hh:mm:ss Z"),
-      _date.format("YYYYMMDD_hhmmss"),
+      _date.format("YYYY-MM-DD HH:mm:ss"),
+      _date.format("YYYY-MM-DD HH:mm:ss Z"),
+      _date.format("YYYY/MM/DD HH:mm:ss"),
+      _date.format("YYYY/MM/DD HH:mm:ss Z"),
+      _date.format("YYYYMMDD_HHmmss"),
       _date.format("YYYY-MM-DD"),
       _date.format("YYYYMMDD"),
-      _date.format("hhmmss"),
-      _date.format("hh:mm:ss"),
+      _date.format("HHmmss"),
+      _date.format("HH:mm:ss"),
     ];
   }, [forDate]);
 
