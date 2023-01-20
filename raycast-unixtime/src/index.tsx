@@ -10,13 +10,13 @@ export default () => {
     if (input === "now") {
       return dayjs();
     }
-    const date = dayjs(input);
-    if (date.isValid()) {
-      return date;
-    }
     const unixtime = parseInt(input);
     if (isValidUnixTime(unixtime)) {
       return fromUnixTime(unixtime);
+    }
+    const date = dayjs(input);
+    if (date.isValid()) {
+      return date;
     }
 
     return;
@@ -26,22 +26,25 @@ export default () => {
     if (input === "now") {
       return dayjs();
     }
-    const date = dayjs(input);
-    if (date.isValid()) {
-      return date;
-    }
     const _unixtime = parseInt(input);
     if (isValidUnixTime(_unixtime)) {
       return dayjs.unix(_unixtime);
     }
+    const date = dayjs(input);
+    if (date.isValid()) {
+      return date;
+    }
 
     return undefined;
   }, [input]);
+  console.log({ input, forDate, forUnixTime });
 
   const unixtimeStr = forUnixTime ? `${forUnixTime.unix()}` : "";
+  console.log({ message: "unixtimeStr", unixtimeStr });
   const dateStrs: string[] = useMemo(() => {
     if (!forDate) return [];
     const _date = dayjs(forDate);
+    console.log({ message: "_date", _date });
     return [
       _date.format("YYYY-MM-DD HH:mm:ss"),
       _date.format("YYYY-MM-DD HH:mm:ss Z"),
